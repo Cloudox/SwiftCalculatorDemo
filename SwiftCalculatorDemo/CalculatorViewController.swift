@@ -20,6 +20,7 @@ class CalculatorViewController: UIViewController {
             showLabel.text = "\(newValue)"
         }
     }
+    var cm = CalculatorModel()
     
     @IBAction func appendDigit(sender: UIButton) {// 数字按键
         let digit = sender.currentTitle!
@@ -41,18 +42,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func equal(sender: UIButton) {// 求值运算
         result.1 = labelValue
         print("\(result)运算结果为")
-        switch result.2 {
-            case "+":
-            result.0 = result.0 + result.1
-            case "-":
-            result.0 = result.0 - result.1
-            case "*":
-            result.0 = result.0 * result.1
-            case "/":
-            result.0 = result.0 / result.1
-        default:
-            break
-        }
+        result = cm.evaluate(result)
         print(result.0)
         labelValue = result.0
     }
